@@ -2,7 +2,6 @@ package com.example.hystrixdemo;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
-import com.netflix.hystrix.HystrixCommandProperties;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,17 +10,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by dlopes on 5/20/18.
+ * Created by dlopes on 5/21/18.
  */
-
-public class IntegrationService extends HystrixCommand<String> {
+public class StringService extends HystrixCommand<String> {
 
     private final String urlPath;
 
-    public IntegrationService(String urlPath){
-        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
-                .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().
-                        withMetricsRollingStatisticalWindowInMilliseconds(60000)));
+    public StringService(String urlPath){
+        super(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"));
         this.urlPath = urlPath;
 
     }
@@ -54,4 +50,3 @@ public class IntegrationService extends HystrixCommand<String> {
     }
 
 }
-

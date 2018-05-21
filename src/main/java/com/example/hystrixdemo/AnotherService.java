@@ -14,12 +14,12 @@ import java.net.URL;
  * Created by dlopes on 5/20/18.
  */
 
-public class IntegrationService extends HystrixCommand<String> {
+public class AnotherService extends HystrixCommand<String> {
 
     private final String urlPath;
 
-    public IntegrationService(String urlPath){
-        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("ExampleGroup"))
+    public AnotherService(String urlPath){
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("AnotherGroup"))
                 .andCommandPropertiesDefaults(HystrixCommandProperties.Setter().
                         withMetricsRollingStatisticalWindowInMilliseconds(60000)));
         this.urlPath = urlPath;
