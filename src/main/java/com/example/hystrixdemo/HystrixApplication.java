@@ -16,8 +16,8 @@ public class HystrixApplication {
 	}
 
 	@Bean
-    public ServletRegistrationBean hystrixMetrics(){
-        return new ServletRegistrationBean(new HystrixMetricsStreamServlet(),"/hystrix.stream");
+    public ServletRegistrationBean<HystrixMetricsStreamServlet> hystrixMetrics(){
+        return new ServletRegistrationBean<HystrixMetricsStreamServlet>(new HystrixMetricsStreamServlet(),"/hystrix.stream");
     }
 
 }
